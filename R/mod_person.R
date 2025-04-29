@@ -87,6 +87,7 @@ mod_person_server <- function(id, transaction){
     })
     observeEvent(input$percentile, {
       transaction[[id]]$percentile <- input$percentile
+
     })
 
 
@@ -102,6 +103,7 @@ mod_person_server <- function(id, transaction){
         value = round(person_def$percentile * 100,1)
       )
       transaction[[id]]$name <- input$person
+      shinyVirga::rv_modify(transaction[[id]], !!!person_def)
     })
 
 
