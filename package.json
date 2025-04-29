@@ -1,0 +1,24 @@
+{
+  "name": "sliding_scale",
+  "version": "1.0.0",
+  "description": "An app that assists with computing a sliding scale based on total net worth via the economic equilibrium model",
+  "main": "index.js",
+  "directories": {
+    "man": "man"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "grunt watch",
+    "build": "npx @tailwindcss/cli -i ./inst/app/CSS/src/tailwind.scss -o ./inst/app/CSS/dest/tw.css && grunt"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-concat": "^2.1.0",
+    "grunt-contrib-cssmin": "^5.0.0",
+    "grunt-contrib-sass": "^2.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}

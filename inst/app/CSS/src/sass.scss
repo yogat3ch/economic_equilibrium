@@ -1,0 +1,50 @@
+$button-color: #e1e9e7;
+
+.bttn-material-flat.bttn-default {
+    background-color: $button-color;
+    color: inherit;
+    border-radius: 8px;
+}
+
+html {
+    &[data-bs-theme="dark"] {
+        & footer {
+            background-color: #000;
+        }
+    }
+
+    &[data-bs-theme="light"] {
+        & footer {
+            background-color: $button-color;
+        }
+    }
+}
+
+
+
+
+/* Apply placeholder color across various browsers and custom class */
+::-webkit-input-placeholder,
+/* WebKit, Blink, Edge */
+:-moz-placeholder,
+/* Mozilla Firefox 4 to 18 */
+::-moz-placeholder,
+/* Mozilla Firefox 19+ */
+:-ms-input-placeholder,
+/* Internet Explorer 10-11 */
+::-ms-input-placeholder,
+/* Microsoft Edge */
+::placeholder,
+/* Modern browsers */
+.bs-placeholder {
+    /* Custom class */
+    color: #A9A9A9 !important;
+    /* Applied !important from the ::placeholder rule */
+    opacity: 1;
+    /* Retained from Firefox rules, usually default anyway */
+}
+
+.navbar-header {
+    margin-right: 20px;
+    border-right: 1px groove;
+}
