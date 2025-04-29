@@ -11,6 +11,8 @@ mod_sliding_scale_ui <- function(id, session = shiny::getDefaultReactiveDomain()
   ns <- NS(id)
   ud <- session$userData
   tagList(tags$h3("Economic Equilibrium Sliding Scale"),
+          tags$p("By providing a base rate for a donation or a service, the value will be scaled such that the amount offered is proportional to the net worth. This is done by using the youngest person's age as a reference range for net worth, the eldest person's percentile is used to calculate approximate net worth in the reference range. The net worth's are then divided by one another to derive the scale factor."),
+          tags$p("If you saved people in the Net Worth Percentile Calculator, you can select them with the 'Choose person' dropdown, otherwise you can use the sliders to select the age and net worth percentile."),
           div(
             class = "row align-items-center",
             shinyVirga::col_6(
@@ -65,12 +67,14 @@ mod_sliding_scale_server <- function(id){
       `person_1` = shinyVirga::rv(
         name = "Custom",
         age = NULL,
-        percentile = NULL
+        percentile = NULL,
+        net_worth = NULL
       ),
       `person_2` = shinyVirga::rv(
         name = "Custom",
         age = NULL,
-        percentile = NULL
+        percentile = NULL,
+        net_worth = NULL
       ))
 
 
@@ -95,10 +99,13 @@ mod_sliding_scale_server <- function(id){
         p1 = list(age = transaction$person_1$age, percentile = transaction$person_1$percentile / 100),
         p2 = list(age = transaction$person_2$age, percentile = transaction$person_2$percentile / 100)
       )
+      # Use the younger person's age as the scale for net worth
+      min_age <- min(purrr::map_dbl(ps, "age"))
+
       for (p in names(ps)) {
         self <- ps[[p]]
-        opposite <- ps[[setdiff(names(ps), p)]]
-        ps[[p]]$net_worth <- predict_net_worth(self, opposite$age)
+        if(is.null(ps[[p]]$net_worth))
+          ps[[p]]$net_worth <- predict_net_worth(self, min_age)
       }
       br(as.numeric(input$base_rate))
       # If p1 is paid by p2
