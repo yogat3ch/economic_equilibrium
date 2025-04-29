@@ -5,7 +5,7 @@ account: yogat3ch
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14643173
-bundleId: 10199672
+bundleId: 10200268
 url: https://yogat3ch.shinyapps.io/economic_equilibrium/
 version: 1
 asMultiple: FALSE
