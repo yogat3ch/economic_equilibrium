@@ -10,7 +10,8 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     bslib::page_fillable(
-      bslib::input_dark_mode(id = "dark_mode", mode = "light", class = "absolute top-2 right-2"),
+      title = "Economic Equilibrium",
+      # Theme
       theme = bslib::bs_theme(
         preset = "united",
         bg = "#E8EEED",
@@ -34,32 +35,36 @@ app_ui <- function(request) {
         `enable-shadows` = TRUE
       ) |>
         bslib::bs_add_rules(sass::sass_file("inst/app/www/style.css")),
-      bslib::navset_bar(
-        title = tags$span(shiny::icon("scale-balanced"), " Tools for Economic Equity"),
-        bslib::input_dark_mode(id = "dark_mode", mode = "light", class = "absolute top-2 right-2"),
+      bslib::navset_card_pill(
+        # Navbar
+        title = tags$span(
+          shiny::icon("scale-balanced"),
+          tags$span(
+            class = "mx-4",
+            "The Economic Equilibrium Sliding Scale"),
+          tags$a(class = "float-right", href = "https://github.com/yogat3ch/economic_equilibrium", shiny::icon("github"))),
         # Navigation
-        header = bslib::page_navbar(
-          bslib::nav_panel("Home", mod_about_ui("about")),
-          bslib::nav_panel("Net Worth Percentile Calculator", mod_net_worth_percentile_calculator_ui("net_worth_percentile")),
-          bslib::nav_panel("Sliding Scale", mod_sliding_scale_ui("sliding_scale")),
-          bslib::nav_panel("Munging", mod_munging_ui("munging")),
-
-          id = "nav",
-          navbar_options = bslib::navbar_options(
-          )
+        bslib::nav_panel("Home", mod_about_ui("about")),
+        bslib::nav_panel(
+          "Net Worth Percentile Calculator",
+          mod_net_worth_percentile_calculator_ui("net_worth_percentile")
         ),
-        footer = tags$footer(
-          class = "max-h-fit",
-          shinyVirga::copyright(
-            copyright_holder = shiny::a(href = "https://www.themindful.life/",
-                                      target =
-                                        "_blank",
-                                      `aria-label` = "Stephen Holsenbeck",
-                                      tags$em("Stephen Holsenbeck"))
-          ),
-          tags$a(href = "", shiny::icon("github"))
+        bslib::nav_panel("Sliding Scale", mod_sliding_scale_ui("sliding_scale")),
+        bslib::nav_panel("Munging", mod_munging_ui("munging")),
+
+        id = "nav",
+        footer = tags$footer(class = "max-h-fit", shinyVirga::copyright(
+          copyright_holder = shiny::a(
+            href = "https://www.themindful.life/",
+            target =
+              "_blank",
+            `aria-label` = "Stephen Holsenbeck",
+            tags$em("Stephen Holsenbeck")
+          )
+        )
         )
       )
+
     )
   )
 }

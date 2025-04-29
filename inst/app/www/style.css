@@ -1,4 +1,4 @@
-/*! sliding_scale 2025-04-29 06:15:36 */
+/*! sliding_scale 2025-04-29 08:37:54 */
 /*! tailwindcss v4.1.4 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
@@ -164,17 +164,11 @@
   }
 }
 @layer utilities {
-  .absolute {
-    position: absolute;
-  }
   .fixed {
     position: fixed;
   }
-  .top-2 {
-    top: calc(var(--spacing) * 2);
-  }
-  .right-2 {
-    right: calc(var(--spacing) * 2);
+  .float-right {
+    float: right;
   }
   .container {
     width: 100%;
@@ -279,11 +273,13 @@
   border-radius: 8px;
 }
 
-html[data-bs-theme=dark] footer {
-  background-color: #000;
+.bslib-page-fill {
+  padding: 0;
+  gap: 0;
 }
-html[data-bs-theme=light] footer {
-  background-color: #e1e9e7;
+
+body > div.card > div.card-body.bslib-gap-spacing.html-fill-item.html-fill-container {
+  max-height: fit-content;
 }
 
 /* Apply placeholder color across various browsers and custom class */
@@ -299,9 +295,4 @@ html[data-bs-theme=light] footer {
   /* Applied !important from the ::placeholder rule */
   opacity: 1;
   /* Retained from Firefox rules, usually default anyway */
-}
-
-.navbar-header {
-  margin-right: 20px;
-  border-right: 1px groove;
 }

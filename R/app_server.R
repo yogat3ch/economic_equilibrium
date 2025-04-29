@@ -22,7 +22,6 @@ app_server <- function(input, output, session) {
       servers[[input$nav]] <<- NULL
       if (!length(servers)) {
         server_handler$destroy()
-        message("all servers loaded")
       }
     }
   })

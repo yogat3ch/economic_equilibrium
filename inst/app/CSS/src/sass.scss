@@ -6,19 +6,40 @@ $button-color: #e1e9e7;
     border-radius: 8px;
 }
 
-html {
-    &[data-bs-theme="dark"] {
-        & footer {
-            background-color: #000;
-        }
-    }
-
-    &[data-bs-theme="light"] {
-        & footer {
-            background-color: $button-color;
-        }
-    }
+// Remove gaps around the page body card
+.bslib-page-fill {
+    padding: 0;
+    gap: 0;
 }
+
+
+body>div.card>div.card-body.bslib-gap-spacing.html-fill-item.html-fill-container {
+    max-height: fit-content;
+}
+
+// html {
+//     &[data-bs-theme="dark"] {
+//         & footer {
+//             background-color: #000;
+//             color: white;
+//         }
+
+//         & body {
+//             background-color: #20252d;
+//             color: white;
+//         }
+//     }
+
+//     &[data-bs-theme="light"] {
+//         & body {
+//             background-color: #c9c9c9;
+//         }
+
+//         & footer {
+//             background-color: $button-color;
+//         }
+//     }
+// }
 
 
 
@@ -42,9 +63,4 @@ html {
     /* Applied !important from the ::placeholder rule */
     opacity: 1;
     /* Retained from Firefox rules, usually default anyway */
-}
-
-.navbar-header {
-    margin-right: 20px;
-    border-right: 1px groove;
 }

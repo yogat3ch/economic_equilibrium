@@ -11,7 +11,7 @@ mod_about_ui <- function(id, session = shiny::getDefaultReactiveDomain()){
   ns <- NS(id)
   ud <- session$userData
   tagList(
-    includeHTML(dirs$top("Readme.html"))
+    includeHTML(dirs$top("about.html"))
   )
 }
 
