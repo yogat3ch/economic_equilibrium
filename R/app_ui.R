@@ -88,7 +88,7 @@ golem_add_external_resources <- function() {
     shinyVirga::use_shinyVirga(),
     bundle_resources(
       path = app_sys("app/www"),
-      app_title = "netWorthSlidingScale"
+      app_title = "Economic Equilibrium Sliding Scale"
     )
     # Add here other external resources
     # for example, you can add shinyalert::useShinyalert()
