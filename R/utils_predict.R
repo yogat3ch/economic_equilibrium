@@ -54,11 +54,10 @@ percentile_net_worth <- function(age = NULL, net_worth = NULL, net_worth_models 
 sliding_scale_factor <- function(p1, p2, net_worth_models = shinyVirga::get_userData("net_worth_models")) {
   # Ensure both have percentile
   purrr::walk(list(p1,p2), \(.x) {
-    stopifnot(`Both people must have percentile` = !is.null(.x$percentile))
+    stopifnot(`Both people must have net_worth` = !is.null(.x$percentile))
   })
 
-  p1_nw_scaled_to_age <- predict_net_worth(p1, p2$age, net_worth_models)
-  return(p1_nw_scaled_to_age / p2$net_worth)
+  return(p1$net_worth / p2$net_worth)
 }
 
 
