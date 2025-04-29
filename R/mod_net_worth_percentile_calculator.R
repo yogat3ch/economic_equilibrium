@@ -12,6 +12,7 @@ mod_net_worth_percentile_calculator_ui <- function(id, session = shiny::getDefau
   ud <- session$userData
   tagList(
     tags$h3("Net Worth Percentile Calculator"),
+    tags$p("This tool calculates net worth and percentile of net worth at your age. You can optionally save the calculations for each person to be used in the sliding scale."),
       tags$p("Calculate the net worth percentile by answering the following questions. For any shared assets, include only the value of the person's share."),
       bslib::layout_columns(
         col_widths = 3,
